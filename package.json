@@ -4,12 +4,19 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "seed": "node seeders/seed.js"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start",
+    "start:dev": "nodemon server.js",
+    "start:prod": "node server.js",
+    "install": "npm run seed",
+    "seed": "node seeders/seed.js",
+    "heroku-postbuild": "npm run seed"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "env": "0.0.2",
     "express": "^4.16.4",
+    "if-env": "^1.0.4",
     "mongoose": "^5.5.8"
   }
 }
